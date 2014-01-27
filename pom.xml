@@ -1,0 +1,25 @@
+<project>
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>nz.co.aetheric.parent</groupId>
+		<artifactId>maven-parent-java</artifactId>
+		<version>1.1.0</version>
+	</parent>
+
+	<groupId>nz.co.aetheric.shiva</groupId>
+	<artifactId>shiva-web-cache</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>Shiva Web - Cache</name>
+	<description>
+		Provides a servlet that will use JAWR to generate an HTML5 application cache manifest file for the defined bundles.
+	</description>
+
+	<dependencies>
+
+
+	</dependencies>
+
+</project>
