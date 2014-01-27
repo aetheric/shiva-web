@@ -1,0 +1,13 @@
+
+# IntelliJ
+.idea/
+*.ipr
+*.iws
+*.iml
+
+# Project
+shiva-web-jade/
+shiva-web-war/
+
+# Output
+target/
