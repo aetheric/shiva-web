@@ -1,6 +1,6 @@
 package nz.co.aetheric.shiva.web.cache;
 
-import net.jawr.web.context.JawrContext;
+import net.jawr.web.resource.bundle.handler.ResourceBundlesHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,6 +23,16 @@ public class CacheServlet extends HttpServlet {
 	public static final String CACHE_SEC_CACHE = "CACHE:";
 	public static final String CACHE_SEC_NET = "NETWORK:";
 	public static final String CACHE_SEC_FALL = "FALLBACK:";
+
+	protected ResourceBundlesHandler jshandler;
+
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		super.init(config);
+
+		ServletContext context = super.getServletContext();
+		//jshandler = (ResourceBundlesHandler) context.getAttribute(ResourceBundlesHandler.JS_CONTEXT_ATTRIBUTE);
+	}
 
 	/**
 	 * TODO
