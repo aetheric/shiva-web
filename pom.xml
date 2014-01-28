@@ -21,6 +21,12 @@
 
 		<dependency>
 			<groupId>nz.co.aetheric.shiva</groupId>
+			<artifactId>shiva-web-cache</artifactId>
+			<version>(0,)</version>
+		</dependency>
+
+		<dependency>
+			<groupId>nz.co.aetheric.shiva</groupId>
 			<artifactId>shiva-web-jade</artifactId>
 			<version>(0,)</version>
 		</dependency>
@@ -28,6 +34,7 @@
 		<dependency>
 			<groupId>nz.co.aetheric.shiva</groupId>
 			<artifactId>shiva-web-war</artifactId>
+			<version>(0,)</version>
 		</dependency>
 
 	</dependencies>
