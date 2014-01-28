@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-fragment
+		id="shiva-web-war"
+		version="3.0"
+		xmlns="http://java.sun.com/xml/ns/javaee"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+		xmlns:webfragment="http://java.sun.com/xml/ns/javaee/web-fragment_3_0.xsd"
+		xsi:schemaLocation="
+
+		http://java.sun.com/xml/ns/javaee
+		http://java.sun.com/xml/ns/javaee/web-fragment_3_0.xsd
+
+		">
+
+	<display-name>shiva-web-war</display-name>
+
+	<welcome-file-list>
+		<welcome-file>app.html</welcome-file>
+	</welcome-file-list>
+
+	<servlet>
+		<servlet-name>app.jsp</servlet-name>
+		<jsp-file>/app.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>app.jsp</servlet-name>
+		<url-pattern>/app.html</url-pattern>
+	</servlet-mapping>
+
+</web-fragment>
