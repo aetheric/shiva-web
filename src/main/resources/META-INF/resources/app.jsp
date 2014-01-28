@@ -7,10 +7,10 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-		<jwr:style src="/bundles/lib.css" media="screen"/>
-		<jwr:style src="/bundles/app.css" media="screen"/>
-		<jwr:script src="/bundles/lib.js"/>
-		<jwr:script src="/bundles/app.js"/>
+		<jwr:style src="/bundles/sslib.css" media="screen"/>
+		<jwr:style src="/bundles/ssapp.css" media="screen"/>
+		<jwr:script src="/bundles/jslib.js"/>
+		<jwr:script src="/bundles/jsapp.js"/>
 	</head>
 	<body ng-module="app">
 		<div ng-view></div>
