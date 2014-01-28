@@ -10,7 +10,7 @@
 	<groupId>nz.co.aetheric.shiva</groupId>
 	<artifactId>shiva-web-war</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>Shiva Web - WAR</name>
 	<description>
@@ -64,7 +64,7 @@
 				<version>1.1.1</version>
 
 				<configuration>
-					<sassSourceDirectory>src/main/resources/META-INF/resources/scss</sassSourceDirectory>
+					<sassSourceDirectory>src/main/resources/META-INF/resources</sassSourceDirectory>
 					<destination>${project.build.outputDirectory}/META-INF/resources/css</destination>
 					<useCompass>true</useCompass>
 				</configuration>
