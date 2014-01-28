@@ -12,7 +12,6 @@
 		<jwr:script src="/bundles/jslib.js"/>
 		<jwr:script src="/bundles/jsapp.js"/>
 	</head>
-	<body ng-module="app">
-		<div ng-view></div>
+	<body ng-app="app">
 	</body>
 </html>
