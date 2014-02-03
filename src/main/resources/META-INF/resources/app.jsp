@@ -7,10 +7,10 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-		<jwr:style src="/bundles/sslib.css" media="screen"/>
-		<jwr:style src="/bundles/ssapp.css" media="screen"/>
-		<jwr:script src="/bundles/jslib.js"/>
-		<jwr:script src="/bundles/jsapp.js"/>
+		<jwr:style src="/bundles/sslib.css" media="screen" useRandomParam="false"/>
+		<jwr:style src="/bundles/ssapp.css" media="screen" useRandomParam="false"/>
+		<jwr:script src="/bundles/jslib.js" useRandomParam="false"/>
+		<jwr:script src="/bundles/jsapp.js" useRandomParam="false"/>
 	</head>
 	<body ng-app="app">
 	</body>
