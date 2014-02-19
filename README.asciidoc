@@ -1,19 +1,6 @@
-= Shiva Web - WAR
+= Shiva Web - Jade
 
-To use, simply add the following code to your project:
-
-.web(-fragment).xml
-[source,xml]
-----------
-
-<filter>
-	<filter-name>JadeTemplateFilter</filter-name>
-	<filter-class>nz.co.aetheric.shiva.web.jade.JadeFilter</filter-class>
-</filter>
-
-<filter-mapping>
-	<filter-name>JadeTemplateFilter</filter-name>
-	<url-pattern>/*</url-pattern>
-</filter-mapping>
-
-----------
+To use, simply add this artefact as a dependency of your project. The web-fragment composition will take care of the
+rest. If you want to provide context information to any of your templates, create an implementation of
+`JadeModelProvider` where the result of `getTemplateName()` will be the name of the template to add context to, and add
+it to the JadeFilter by way of OSGi service injection, or manual addition (`addProvider`).

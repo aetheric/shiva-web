@@ -13,21 +13,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
- * TODO: What is the purpose of this class?
+ * This filter provides jade templating functionality to a web application with as
+ * little pain as possible for the developer.
  * <p>Author: <a href="http://gplus.to/tzrlk">Peter Cummuskey</a></p>
  */
 public class JadeFilter implements Filter {
 	private static final Logger LOG = LoggerFactory.getLogger(JadeFilter.class);
 
-	/** TODO */
-	private JadeConfiguration config;
-	private TemplateLoader loader;
+	protected JadeConfiguration config;
+
+	protected TemplateLoader loader;
+
+	protected Map<String, JadeModelProvider> providers;
+
+	public JadeFilter() {
+		providers = new LinkedHashMap<>();
+	}
 
 	/**
-	 * TODO
-	 * @param filterConfig TODO
+	 * Sets up the filter with information from the FilterConfig instance.
+	 * @param filterConfig The configuration settings from the web(-fragment).xml used to initialise this.
 	 * @throws ServletException
 	 */
 	@Override
@@ -55,10 +64,10 @@ public class JadeFilter implements Filter {
 	}
 
 	/**
-	 * TODO
-	 * @param request TODO
-	 * @param response TODO
-	 * @param chain TODO
+	 * The primary hook method for the filter chain.
+	 * @param request The http request.
+	 * @param response The http response.
+	 * @param chain The filter chain this is a part of.
 	 * @throws IOException
 	 * @throws ServletException
 	 */
@@ -73,33 +82,56 @@ public class JadeFilter implements Filter {
 	}
 
 	/**
-	 * TODO
-	 * @param request TODO
-	 * @param response TODO
+	 * The more specific <strong>Http</strong>ServletXxx implementation of
+	 * {@link #doFilter(ServletRequest, ServletResponse, FilterChain)}.
+	 * @param request The http request.
+	 * @param response The http response.
 	 * @throws IOException
 	 * @throws ServletException
 	 */
 	public void doFilter(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 
-		String uri = request.getRequestURI();
-		LOG.debug("Checking '%s'.", uri);
+		final String uri = request.getRequestURI();
+		if (LOG.isDebugEnabled()) {
+			LOG.debug("Checking '{}'.", uri);
+		}
 
-		String templateName = uri.substring(request.getContextPath().length());
-		JadeTemplate template = config.getTemplate(templateName);
+		final String templateName = uri.substring(request.getContextPath().length());
+		final JadeTemplate template = config.getTemplate(templateName);
 
-		// TODO: Some method of adding context to templates.
+		final JadeModelProvider provider = providers.get(templateName);
+		final Map<String, Object> model = provider != null
+				? provider.getTemplateModel()
+				: Collections.<String, Object>emptyMap();
 
-		String rendered = config.renderTemplate(template, Collections.<String, Object>emptyMap());
+		final String rendered = config.renderTemplate(template, model);
 		response.getWriter().append(rendered);
 	}
 
 	/**
-	 * TODO
+	 * Hook method for safely taking down this given filter instance.
+	 * Not actually necessary in this implementation.
 	 */
 	@Override
 	public void destroy() {
 		/* Nothing necessary here. */
+	}
+
+	/**
+	 * Adds a provider to the reference hash.
+	 * @param provider The provider to add.
+	 */
+	public void addProvider(JadeModelProvider provider) {
+		providers.put(provider.getTemplateName(), provider);
+	}
+
+	/**
+	 * Removes a provider from the reference hash.
+	 * @param provider The provider to remove.
+	 */
+	public void removeProvider(JadeModelProvider provider) {
+		providers.remove(provider.getTemplateName());
 	}
 
 }
