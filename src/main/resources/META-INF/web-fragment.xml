@@ -14,27 +14,13 @@
 	<name>ShivaWebLibs</name>
 	<display-name>shiva-web-libs</display-name>
 
-	<welcome-file-list>
-		<welcome-file>app.html</welcome-file>
-	</welcome-file-list>
-
-	<servlet>
-		<servlet-name>app.jsp</servlet-name>
-		<jsp-file>/app.jsp</jsp-file>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>app.jsp</servlet-name>
-		<url-pattern>/app.html</url-pattern>
-	</servlet-mapping>
-
 	<servlet>
 		<servlet-name>JavascriptServlet</servlet-name>
 		<servlet-class>net.jawr.web.servlet.JawrServlet</servlet-class>
 
 		<init-param>
 			<param-name>configLocation</param-name>
-			<param-value>classpath:jawr.properties</param-value>
+			<param-value>/jawr.properties</param-value>
 		</init-param>
 
 		<load-on-startup>1</load-on-startup>
@@ -51,7 +37,7 @@
 
 		<init-param>
 			<param-name>configLocation</param-name>
-			<param-value>classpath:jawr.properties</param-value>
+			<param-value>/jawr.properties</param-value>
 		</init-param>
 
 		<init-param>
