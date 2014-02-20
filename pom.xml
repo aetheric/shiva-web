@@ -9,7 +9,7 @@
 
 	<groupId>nz.co.aetheric.shiva</groupId>
 	<artifactId>shiva-web</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Shiva Web</name>
@@ -22,19 +22,19 @@
 		<dependency>
 			<groupId>nz.co.aetheric.shiva</groupId>
 			<artifactId>shiva-web-cache</artifactId>
-			<version>(0,)</version>
+			<version>[1-SNAPSHOT,)</version>
 		</dependency>
 
 		<dependency>
 			<groupId>nz.co.aetheric.shiva</groupId>
 			<artifactId>shiva-web-jade</artifactId>
-			<version>(0,)</version>
+			<version>[1-SNAPSHOT,)</version>
 		</dependency>
 
 		<dependency>
 			<groupId>nz.co.aetheric.shiva</groupId>
 			<artifactId>shiva-web-war</artifactId>
-			<version>(0,)</version>
+			<version>[1-SNAPSHOT,)</version>
 		</dependency>
 
 	</dependencies>
