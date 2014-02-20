@@ -22,12 +22,13 @@
 		<dependency>
 			<groupId>nz.co.aetheric.shiva</groupId>
 			<artifactId>shiva-web-jade</artifactId>
-			<version>(0,)</version>
+			<version>[1-SNAPSHOT,)</version>
 		</dependency>
 
 		<dependency>
 			<groupId>nz.co.aetheric.shiva</groupId>
 			<artifactId>shiva-web-war</artifactId>
+			<version>[1-SNAPSHOT,)
 		</dependency>
 
 	</dependencies>
