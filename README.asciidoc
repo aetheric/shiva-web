@@ -1,0 +1,3 @@
+= Shiva Web - Libs
+
+This artefact provides all the javascript and css libraries needed to build a Shiva Web angular application.

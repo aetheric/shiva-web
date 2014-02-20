@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-fragment
+		version="3.0"
+		id="shiva-web-libs"
+		xmlns="http://java.sun.com/xml/ns/javaee"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+		xmlns:webfragment="http://java.sun.com/xml/ns/javaee/web-fragment_3_0.xsd"
+		xsi:schemaLocation="
+			http://java.sun.com/xml/ns/javaee
+			http://java.sun.com/xml/ns/javaee/web-fragment_3_0.xsd
+		">
+
+	<name>ShivaWebLibs</name>
+	<display-name>shiva-web-libs</display-name>
+
+	<welcome-file-list>
+		<welcome-file>app.html</welcome-file>
+	</welcome-file-list>
+
+	<servlet>
+		<servlet-name>app.jsp</servlet-name>
+		<jsp-file>/app.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>app.jsp</servlet-name>
+		<url-pattern>/app.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>JavascriptServlet</servlet-name>
+		<servlet-class>net.jawr.web.servlet.JawrServlet</servlet-class>
+
+		<init-param>
+			<param-name>configLocation</param-name>
+			<param-value>classpath:jawr.properties</param-value>
+		</init-param>
+
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>JavascriptServlet</servlet-name>
+		<url-pattern>*.js</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>CssServlet</servlet-name>
+		<servlet-class>net.jawr.web.servlet.JawrServlet</servlet-class>
+
+		<init-param>
+			<param-name>configLocation</param-name>
+			<param-value>classpath:jawr.properties</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>type</param-name>
+			<param-value>css</param-value>
+		</init-param>
+
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CssServlet</servlet-name>
+		<url-pattern>*.css</url-pattern>
+	</servlet-mapping>
+
+</web-fragment>
