@@ -20,7 +20,7 @@
 
 		<init-param>
 			<param-name>configLocation</param-name>
-			<param-value>/jawr.properties</param-value>
+			<param-value>/META-INF/resources/WEB-INF/jawr.properties</param-value>
 		</init-param>
 
 		<load-on-startup>1</load-on-startup>
@@ -37,7 +37,7 @@
 
 		<init-param>
 			<param-name>configLocation</param-name>
-			<param-value>/jawr.properties</param-value>
+			<param-value>/META-INF/resources/WEB-INF/jawr.properties</param-value>
 		</init-param>
 
 		<init-param>
