@@ -1,9 +1,8 @@
 package nz.co.aetheric.shiva.web.jade;
 
 import de.neuland.jade4j.JadeConfiguration;
-import de.neuland.jade4j.template.FileTemplateLoader;
+import de.neuland.jade4j.template.ClasspathTemplateLoader;
 import de.neuland.jade4j.template.JadeTemplate;
-import de.neuland.jade4j.template.TemplateLoader;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,9 +23,13 @@ import java.util.Map;
 public class JadeFilter implements Filter {
 	private static final Logger LOG = LoggerFactory.getLogger(JadeFilter.class);
 
-	protected JadeConfiguration config;
+	public static final String[] PREFIX_LIST = new String[] {
+			"WEB-INF",
+			"META-INF/resources",
+			"META-INF/resources/WEB-INF"
+	};
 
-	protected TemplateLoader loader;
+	protected JadeConfiguration config;
 
 	protected Map<String, JadeModelProvider> providers;
 
@@ -41,7 +44,8 @@ public class JadeFilter implements Filter {
 	 */
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		this.config = new JadeConfiguration();
+
+		config = new JadeConfiguration();
 
 		String caching = filterConfig.getInitParameter("caching");
 		if (StringUtils.isNotBlank(caching)) {
@@ -53,13 +57,7 @@ public class JadeFilter implements Filter {
 			config.setPrettyPrint("true".equalsIgnoreCase(prettyPrint));
 		}
 
-		String templatePath = filterConfig.getInitParameter("templatePath");
-		loader = new FileTemplateLoader(
-				StringUtils.isNotBlank(templatePath) ? templatePath : "/",
-				"UTF-8"
-		);
-
-		//etc.
+		config.setTemplateLoader(new ClasspathTemplateLoader());
 
 	}
 
@@ -98,7 +96,11 @@ public class JadeFilter implements Filter {
 		}
 
 		final String templateName = uri.substring(request.getContextPath().length());
-		final JadeTemplate template = config.getTemplate(templateName);
+		final JadeTemplate template = this.getTemplate(templateName);
+
+		if (template == null) {
+			return;
+		}
 
 		final JadeModelProvider provider = providers.get(templateName);
 		final Map<String, Object> model = provider != null
@@ -107,6 +109,19 @@ public class JadeFilter implements Filter {
 
 		final String rendered = config.renderTemplate(template, model);
 		response.getWriter().append(rendered);
+	}
+
+	protected JadeTemplate getTemplate(String templateName) {
+		for (String uriPrefix : PREFIX_LIST) {
+			try {
+				return config.getTemplate(uriPrefix + templateName);
+			} catch (IOException ex) {
+				LOG.trace("Unable to load template:", ex);
+			}
+		}
+
+		LOG.warn("Unable to find template in classpath: {}", templateName);
+		return null;
 	}
 
 	/**

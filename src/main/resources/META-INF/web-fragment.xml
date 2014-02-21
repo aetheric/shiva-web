@@ -17,7 +17,7 @@
 
 	<filter-mapping>
 		<filter-name>JadeTemplateFilter</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/pane/*</url-pattern>
 	</filter-mapping>
 
 </web-fragment>
