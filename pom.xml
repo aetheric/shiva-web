@@ -110,7 +110,152 @@
 	</dependencies>
 
 	<build>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
 		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+
+					<execution>
+						<id>resolve-versions</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>properties</goal>
+						</goals>
+					</execution>
+
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+
+					<execution>
+						<id>fix-version-angularjs</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>regex-property</goal>
+						</goals>
+						<configuration>
+							<name>angular.version</name>
+							<value>${org.webjars:angularjs:jar}</value>
+							<regex>^.+?angularjs(?:\\|/)(.+?)(?:\\|/).+$</regex>
+							<replacement>$1</replacement>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>fix-version-bootstrap-sass</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>regex-property</goal>
+						</goals>
+						<configuration>
+							<name>bootstrap.version</name>
+							<value>${org.webjars:bootstrap-sass:jar}</value>
+							<regex>^.+?bootstrap-sass(?:\\|/)(.+?)(?:\\|/).+$</regex>
+							<replacement>$1</replacement>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>fix-version-angular-strap</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>regex-property</goal>
+						</goals>
+						<configuration>
+							<name>angular-strap.version</name>
+							<value>${org.webjars:angular-strap:jar}</value>
+							<regex>^.+?angular-strap(?:\\|/)(.+?)(?:\\|/).+$</regex>
+							<replacement>$1</replacement>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>fix-version-json3</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>regex-property</goal>
+						</goals>
+						<configuration>
+							<name>json3.version</name>
+							<value>${org.webjars:json3:jar}</value>
+							<regex>^.+?json3(?:\\|/)(.+?)(?:\\|/).+$</regex>
+							<replacement>$1</replacement>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>fix-version-momentjs</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>regex-property</goal>
+						</goals>
+						<configuration>
+							<name>moment.version</name>
+							<value>${org.webjars:momentjs:jar}</value>
+							<regex>^.+?momentjs(?:\\|/)(.+?)(?:\\|/).+$</regex>
+							<replacement>$1</replacement>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>fix-version-underscorejs</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>regex-property</goal>
+						</goals>
+						<configuration>
+							<name>underscore.version</name>
+							<value>${org.webjars:underscorejs:jar}</value>
+							<regex>^.+?underscorejs(?:\\|/)(.+?)(?:\\|/).+$</regex>
+							<replacement>$1</replacement>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>fix-version-underscore.string</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>regex-property</goal>
+						</goals>
+						<configuration>
+							<name>underscore-string.version</name>
+							<value>${org.webjars:underscore.string:jar}</value>
+							<regex>^.+?underscore.string(?:\\|/)(.+?)(?:\\|/).+$</regex>
+							<replacement>$1</replacement>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>fix-version-URI.js</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>regex-property</goal>
+						</goals>
+						<configuration>
+							<name>uri.version</name>
+							<value>${org.webjars:URI.js:jar}</value>
+							<regex>^.+?URI.js(?:\\|/)(.+?)(?:\\|/).+$</regex>
+							<replacement>$1</replacement>
+						</configuration>
+					</execution>
+
+				</executions>
+			</plugin>
 
 			<plugin>
 				<groupId>org.apache.felix</groupId>
@@ -127,7 +272,26 @@
 				</executions>
 			</plugin>
 
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>properties-maven-plugin</artifactId>
+				<version>1.0-alpha-2</version>
+				<configuration>
+					<properties><!-- Nothing needed here --></properties>
+					<outputFile>${project.build.directory}/build.properties</outputFile>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>verify</phase>
+						<goals>
+							<goal>write-project-properties</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
+
 	</build>
 
 </project>
