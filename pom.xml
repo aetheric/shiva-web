@@ -294,4 +294,17 @@
 		</plugins>
 
 	</build>
+
+	<scm>
+		<url>http://github.com/aetheric/shiva-web</url>
+		<connection>scm:git:git://github.com/aetheric/shiva-web.git</connection>
+		<developerConnection>scm:git:git@github.com:aetheric/shiva-web.git</developerConnection>
+		<tag>shiva-web-libs</tag>
+	</scm>
+
+	<issueManagement>
+		<system>github</system>
+		<url>https://github.com/aetheric/shiva-web/issues</url>
+	</issueManagement>
+
 </project>
